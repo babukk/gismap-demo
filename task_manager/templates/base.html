@@ -1,0 +1,69 @@
+{% load static %}<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title></title>
+
+    <link rel="stylesheet" href="{%static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto|Varela+Round" />
+
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    {% block commoncss %}{% endblock %}
+
+    <!--[if lt IE 9]>
+        <script type="text/javascript" src="/static/js/html5shiv.min.js"></script>
+        <script type="text/javascript" src="/static/js/html5shiv-printshiv.min.js"></script>
+        <script type="text/javascript" src="/static/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+        <div class="container topnav">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+                <span class="navbar-brand topnav"><a href="/">Система мониторинга</a></span>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                    <li>
+                        <a href="/create_task_map">создать задание</a>
+                    </li>
+                    <li>
+                        <a href="/logout" title="Выйти"><img src="/static/img/icons/exit-50.png" width="20" class="profile-image" alt="Выйти" /></a>
+                    </li>
+                {% else %}
+                    <li><br />Необходимо авторизоваться.</li>
+                {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+{% block login_block %}
+{% endblock %}
+
+    <container>
+{% block main_block %}
+{% endblock %}
+    </container>
+
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+{% block scripts %}
+{% endblock %}
+{% block custom_scripts %}
+{% endblock %}
+</body>
+</html>

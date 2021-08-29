@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.po
+*.log
+*.bak
+*.pid
+logs/
+*.sqlite3
+local_settings.py
+migrations/
+0*.py
+static/
+libs/drf-yasg/
